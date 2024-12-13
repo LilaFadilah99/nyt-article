@@ -11,7 +11,7 @@ This project is fully responsive, ensuring a seamless user experience across all
 - Article Search: Users can enter keywords to search for relevant articles from The New York Times.
 - Pagination: The application supports pagination, allowing users to - load more articles with a click of a button, making it easy to browse through large sets of results.
 - Responsive Design: The app automatically adapts its layout to different screen sizes, providing a user-friendly experience on desktop, tablet, and mobile.
-- Error Handling: If the search fails, an error message is displayed. If no articles are found for the search query, a message prompts users to try another keyword.
+- Error Handling: If the search fails, an error message is displayed. If no articles are found for the search query, a message prompts users to try another keyword
 
 ## Installation
 
