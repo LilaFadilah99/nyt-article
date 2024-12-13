@@ -1,16 +1,8 @@
 import axios from "axios";
+import { Article } from "../types/article";
 
-const API_KEY = "TGPFgKiXPyVRr9t1xeTiabWUF8muaUEK";
-const BASE_URL = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
-
-interface Article {
-  id: string;
-  title: string;
-  author: string;
-  date: string;
-  url: string;
-  image: string | null; // Added image property
-}
+const API_KEY = import.meta.env.VITE_API_KEY;
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 interface ArticlesResponse {
   articles: Article[];
@@ -30,18 +22,7 @@ export const getArticlesData = async (query: string, page: number = 0): Promise<
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const articles = response.data.response.docs.map((article: any) => {
       const multimedia = article.multimedia || [];
-      const image = multimedia.length
-        ? `https://www.nytimes.com/${multimedia[0]?.url}` // Get the first image URL
-        : null;
-
-      console.log({
-        id: article._id,
-        title: article.headline?.main || "No Title",
-        author: article.byline?.original || "Unknown Author",
-        date: article.pub_date || "Unknown Date",
-        url: article.web_url,
-        image,
-      });
+      const image = multimedia.length ? `https://www.nytimes.com/${multimedia[0]?.url}` : null;
 
       return {
         id: article._id,
